@@ -122,62 +122,62 @@ Because CouchDraw is a simple demo app you're only going to be using [one node w
 
 Couchbase uses [buckets](https://docs.couchbase.com/server/5.5/understanding-couchbase/buckets-memory-and-storage/buckets.html) to group collections of keys and values logically. Simply put, documents are stored in buckets, and you're going to need a bucket to store CouchDraw documents in.
 
-Within the Couchbase Server admin portal click "Buckets", located on the left hand navigation menu.
+Create a bucket to connect with Sync Gateway and the embedded Couchbase Lite database with the following steps.
 
-<img src="media/buckets.png" width="200px" />
+1. Within the Couchbase Server admin portal click "Buckets", located on the left hand navigation menu.
 
-Click "Add Bucket".
+    <img src="media/buckets.png" width="200px" />
 
-<img src="media/add_bucket.png" width="200px" />
+2. Click "Add Bucket".
 
-Fill in the details with the following. 
+    <img src="media/add_bucket.png" width="200px" />
 
-<img src="media/add_bucket_dialog.png" width="600px" />
+3. Fill in the details with the following. 
 
-**Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "couchdraw_user" and a password of "password". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
+    <img src="media/add_bucket_dialog.png" width="600px" />
 
-### Create a user <a name="create-user"></a>
-
-In order for Sync Gateway to access the "couchdraw" bucket we need to create a user for it to use with the appropriate permissions. To do that you'll need to create a new users.
-
-Click "Security", located on the left hand navigation menu.
-
-<img src="media/security.png" width="200px" />
-
-Click "Add User"
-
-<img src="media/add_user.png" width="200px" />
-
-Once the dialog is displayed, do the following:
-
-* Add a username.
-* Add a password.
-* Select "Read-Only Admin" access under the "Administration & Global Roles" section.
-* Select "Application Access" under the "couchdraw" section. 
-
-<img src="media/add_user_dialog.png" width="600px" />
-
-**Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "**couchdraw_user**" and a password of "**password**". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
+    **Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "couchdraw_user" and a password of "password". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
 
 ### Create a user <a name="create-user"></a>
+
+In order for Sync Gateway to access the "couchdraw" bucket we need to create a user for it to use with the appropriate permissions. To do that you'll need to create a new users with the following steps.
+
+1. Click "Security", located on the left hand navigation menu.
+
+    <img src="media/security.png" width="200px" />
+
+2. Click "Add User"
+
+    <img src="media/add_user.png" width="200px" />
+
+3. Once the dialog is displayed, do the following:
+
+    * Add a username.
+    * Add a password.
+    * Select "Read-Only Admin" access under the "Administration & Global Roles" section.
+    * Select "Application Access" under the "couchdraw" section. 
+
+    <img src="media/add_user_dialog.png" width="600px" />
+
+    **Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "**couchdraw_user**" and a password of "**password**". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
+
+### Create a primary index <a name="create-index"></a>
 
 When you want to query the data you'll need to have a [primary index](https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/createprimaryindex.html) created for the entire "couchdraw" bucket. 
 
-Click "Security", located on the left hand navigation menu.
+1. Click "Security", located on the left hand navigation menu.
 
-<img src="media/query.png" width="200px">
+    <img src="media/query.png" width="200px">
 
-Enter the following N1QL command into the query window
+2. Enter the following N1QL command into the query window
 
+    ```SQL
+    CREATE PRIMARY INDEX couchdraw_primary_index on couchdraw using GSI;
+    ```
 
+    for example...
 
-```SQL
-CREATE PRIMARY INDEX couchdraw_primary_index on couchdraw using GSI;
-```
-
-for example...
-
-<img src="media/create_primary_index.png" />
+    <img src="media/create_primary_index.png" />
 
 
 ## Starting Sync Gateway <a name="start-sg"></a>
