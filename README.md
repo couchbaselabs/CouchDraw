@@ -2,7 +2,9 @@
 
 **CouchDraw** combines the power of [SkiaSharp](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/), [Xamarin](https://visualstudio.microsoft.com/xamarin/), and [Couchbase](https://www.couchbase.com/) to create a fully synchronized canvas across devices and platforms. This readme will walk you through the steps for getting this app up and running (locally) in under 15 minutes!
 
+<p align="center">
 <img src="media/N1QL_Rick.gif" />
+</p>
 
 # Table of Contents
 1. [Overview](#overview)
@@ -130,7 +132,7 @@ Click "Add Bucket".
 
 Fill in the details with the following. 
 
-<img src="media/add_bucket_dialog.png"  />
+<img src="media/add_bucket_dialog.png" width="600px" />
 
 **Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "couchdraw_user" and a password of "password". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
 
@@ -153,7 +155,7 @@ Once the dialog is displayed, do the following:
 * Select "Read-Only Admin" access under the "Administration & Global Roles" section.
 * Select "Application Access" under the "couchdraw" section. 
 
-<img src="media/add_user_dialog.png"  />
+<img src="media/add_user_dialog.png" width="600px" />
 
 **Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "**couchdraw_user**" and a password of "**password**". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
 
@@ -193,6 +195,10 @@ readonly Uri _remoteSyncUrl = new Uri("ws://localhost:4984");
 // Note: Use '10.0.2.2' when using an emulator
 //readonly Uri _remoteSyncUrl = new Uri("ws://10.0.2.2:4984");
 ```
+
+<p align="center">
+<img src="media/couchdraw_overview.gif" />
+</p>
 
 ## Support and Contribution <a name="support-contribute"></a>
 
