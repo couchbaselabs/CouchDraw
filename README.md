@@ -159,6 +159,27 @@ Once the dialog is displayed, do the following:
 
 **Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "**couchdraw_user**" and a password of "**password**". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
 
+### Create a user <a name="create-user"></a>
+
+When you want to query the data you'll need to have a [primary index](https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/createprimaryindex.html) created for the entire "couchdraw" bucket. 
+
+Click "Security", located on the left hand navigation menu.
+
+<img src="media/query.png" width="200px">
+
+Enter the following N1QL command into the query window
+
+
+
+```SQL
+CREATE PRIMARY INDEX couchdraw_primary_index on couchdraw using GSI;
+```
+
+for example...
+
+<img src="media/create_primary_index.png" />
+
+
 ## Starting Sync Gateway <a name="start-sg"></a>
 
 After Couchbase Server is running and configured for CouchDraw you'll need to start Sync Gateway. To start Sync Gateway execute the following command. 
@@ -168,6 +189,10 @@ After Couchbase Server is running and configured for CouchDraw you'll need to st
 ```
 
 **Note:** "basic-sync-function.json" is included within the repo [here](src/basic-sync-function.json).
+
+When Sync Gateway initially starts and accesses Couchbase Server it will create a variety of indexes on the "couchdraw" bucket. 
+
+<img src="media/indexes.png" width="600px" />
 
 ## Mobile Solution Architecture <a name="mobile-architecture"></a>
 
