@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:tt="clr-namespace:TouchTracking"
+    mc:Ignorable="d" 
+    x:Class="CouchDraw.MainPage">
+    
+    <Grid  BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    
+        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            
+            <skia:SKCanvasView x:Name="canvasView" PaintSurface="OnCanvasViewPaintSurface" />
+
+            <Grid.Effects>
+                <tt:TouchEffect Capture="True" TouchAction="OnTouchEffectAction" />
+            </Grid.Effects>
+            
+        </Grid> 
+        
+        <StackLayout Orientation="Horizontal" Spacing="20"
+                         HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0">
+                
+                <Button 
+                    Command="{Binding SelectPathColorCommand}"
+                    CommandParameter="#000000"
+                    BackgroundColor="#000000" 
+                    WidthRequest="40" HeightRequest="40" BorderRadius="20"
+                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
+                
+                <Button 
+                    Command="{Binding SelectPathColorCommand}"
+                    CommandParameter="#0000FF"
+                    BackgroundColor="#0000FF" 
+                    WidthRequest="40" HeightRequest="40" BorderRadius="20"
+                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
+                
+                <Button 
+                    Command="{Binding SelectPathColorCommand}"
+                    CommandParameter="#FF0000"
+                    BackgroundColor="#FF0000" 
+                    WidthRequest="40" HeightRequest="40" BorderRadius="20"
+                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
+                
+                <Button 
+                    Command="{Binding SelectPathColorCommand}"
+                    CommandParameter="#FFFF00"
+                    BackgroundColor="#FFFF00" 
+                    WidthRequest="40" HeightRequest="40" BorderRadius="20"
+                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
+                
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" Margin="25,15,25,15">
+            
+                <Button Text="Undo" Command="{Binding UndoPathCommand}" TextColor="Purple"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="StartAndExpand" />
+        
+                <Button Text="Clear All" Command="{Binding ClearAllPathsCommand}" TextColor="Fuchsia" 
+                        FontAttributes="Bold" FontSize="Large" HorizontalOptions="EndAndExpand" />
+            
+            </StackLayout>
+    </Grid>
+</ContentPage>
