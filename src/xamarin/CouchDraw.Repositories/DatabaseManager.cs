@@ -7,10 +7,10 @@ namespace CouchDraw.Repositories
     public class DatabaseManager : IDisposable
     {
         // Note: User 'localhost' or '127.0.0.1' when using a simulator 
-        //readonly Uri _remoteSyncUrl = new Uri("ws://localhost:4984");
+        readonly Uri _remoteSyncUrl = new Uri("ws://localhost:4984");
 
         // Note: Use '10.0.2.2' when using an emulator
-        readonly Uri _remoteSyncUrl = new Uri("ws://10.0.2.2:4984");
+        //readonly Uri _remoteSyncUrl = new Uri("ws://10.0.2.2:4984");
 
         readonly string _databaseName;
 

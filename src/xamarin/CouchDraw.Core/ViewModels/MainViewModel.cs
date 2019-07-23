@@ -121,7 +121,7 @@ namespace CouchDraw.Core.ViewModels
 
         void SavePath(Path path)
         {
-            CanvasRepository?.SavePath(path);
+            Task.Run(() => CanvasRepository?.SavePath(path));
             UpdateCanvas?.Invoke();
         }
 

@@ -1,0 +1,28 @@
+{
+  "logging": {
+    "console": {
+     "log_level": "debug",
+     "log_keys": ["*"],
+     "color_enabled": false
+   },
+"logKeys": ["*"],
+     "logLevel": "debug",
+           "debug": {
+               "enabled": true
+           }
+       },
+  "databases": {
+    "couchdraw": {
+      "server": "http://localhost:8091",
+      "bucket": "couchdraw",
+      "username": "couchdraw_user",
+      "password": "password",
+      "num_index_replicas": 0,
+      "enable_shared_bucket_access": true,
+      "import_docs": "continuous",
+      "users": { "GUEST": { "disabled": false, "admin_channels": ["*"] } },
+      "allow_conflicts": false,
+      "revs_limit": 20
+    }
+  }
+}

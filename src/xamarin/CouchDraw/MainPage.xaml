@@ -33,22 +33,22 @@
                 
                 <Button 
                     Command="{Binding SelectPathColorCommand}"
-                    CommandParameter="#0000FF"
-                    BackgroundColor="#0000FF" 
+                    CommandParameter="#9BB5F6"
+                    BackgroundColor="#9BB5F6" 
                     WidthRequest="40" HeightRequest="40" BorderRadius="20"
                     HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
                 
+                <Button 
+                    Command="{Binding SelectPathColorCommand}"
+                    CommandParameter="#40CD37"
+                    BackgroundColor="#40CD37" 
+                    WidthRequest="40" HeightRequest="40" BorderRadius="20"
+                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
+            
                 <Button 
                     Command="{Binding SelectPathColorCommand}"
                     CommandParameter="#FF0000"
                     BackgroundColor="#FF0000" 
-                    WidthRequest="40" HeightRequest="40" BorderRadius="20"
-                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
-                
-                <Button 
-                    Command="{Binding SelectPathColorCommand}"
-                    CommandParameter="#FFFF00"
-                    BackgroundColor="#FFFF00" 
                     WidthRequest="40" HeightRequest="40" BorderRadius="20"
                     HorizontalOptions="Center" VerticalOptions="Start" Margin="0,35,0,0" />
                 
