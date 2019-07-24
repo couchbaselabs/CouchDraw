@@ -16,7 +16,7 @@
 5. [Configuring Couchbase Server for Sync Gateway](#configure-cbs)
     1. [Create a bucket](#create-bucket)
     2. [Create a user](#create-user)
-    3. [Create a primary index (optional)](#create-index)
+    3. [Create a primary index **(optional)**](#create-index)
 6. [Starting Sync Gateway](#start-sg)
 7. [Mobile Solution Architecture](#mobile-architecture)
 8. [Running the solution](#running) 
