@@ -3,7 +3,7 @@
 **CouchDraw** combines the power of [SkiaSharp](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/), [Xamarin](https://visualstudio.microsoft.com/xamarin/), and [Couchbase](https://www.couchbase.com/) to create a fully synchronized canvas across devices and platforms. This readme will walk you through the steps for getting this app up and running (locally) in under 15 minutes!
 
 <p align="center">
-<img src="media/N1QL_Rick.gif" />
+<img src="media/snake.gif" />
 </p>
 
 # Table of Contents
@@ -200,7 +200,7 @@ readonly Uri _remoteSyncUrl = new Uri("ws://localhost:4984");
 ```
 
 <p align="center">
-<img src="media/couchdraw_overview.gif" />
+<img src="media/N1QL_Rick.gif" />
 </p>
 
 ## Support and Contribution <a name="support-contribute"></a>
