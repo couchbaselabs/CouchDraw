@@ -110,19 +110,17 @@ Couchbase Server can be accessed using
  * [API](https://docs.couchbase.com/server/6.0/rest-api/rest-intro.html)
  * An [administration (web) portal](https://docs.couchbase.com/server/6.0/getting-started/look-at-the-results.html)
 
-When Couchbase Server has been started you'll be able to **navigate directly to** the admin portal at **http://localhost:8091**.
-
 ## Configuring Couchbase Server for Sync Gateway <a name="configure-cbs"></a>
 
-Once Couchbase Server has been started you'll be able to **navigate directly to** the admin portal at **http://localhost:8091**.
+Once Couchbase Server has been started navigate to the admin portal at **http://localhost:8091**.
 
-Because CouchDraw is a simple demo app you're only going to be using [one node within a single cluster](https://docs.couchbase.com/server/6.0/learn/architecture-overview.html). 
+**Note:** Because CouchDraw is a simple demo app you're only going to be using [one node within a single cluster](https://docs.couchbase.com/server/6.0/learn/architecture-overview.html). 
 
 ### Create a bucket <a name="create-bucket"></a>
 
 Couchbase uses [buckets](https://docs.couchbase.com/server/5.5/understanding-couchbase/buckets-memory-and-storage/buckets.html) to group collections of keys and values logically. Simply put, documents are stored in buckets, and you're going to need a bucket to store CouchDraw documents in.
 
-Create a bucket to connect with Sync Gateway and the embedded Couchbase Lite database with the following steps.
+To create a bucket that can be accessed by Sync Gateway and the embedded Couchbase Lite database do the following:
 
 1. Within the Couchbase Server admin portal click "Buckets", located on the left hand navigation menu.
 
@@ -161,9 +159,9 @@ In order for Sync Gateway to access the "couchdraw" bucket we need to create a u
 
     **Note:** The Sync Gateway JSON configuration file that is included in the repo currently has a username of "**couchdraw_user**" and a password of "**password**". The key here is that whatever is in the Sync Gateway configuration file needs to be the same as the user you create in Couchbase Server in order to allow application access. 
 
-### Create a primary index <a name="create-index"></a>
+### (Optional) Create a primary index <a name="create-index"></a>
 
-When you want to query the data you'll need to have a [primary index](https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/createprimaryindex.html) created for the entire "couchdraw" bucket. 
+If you want to query the data within Couchbase Server you'll need to have a [primary index](https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/createprimaryindex.html) created for the "couchdraw" bucket. 
 
 1. Click "Security", located on the left hand navigation menu.
 
