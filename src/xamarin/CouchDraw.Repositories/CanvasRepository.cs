@@ -52,7 +52,7 @@ namespace CouchDraw.Repositories
 
                 paths = await Task.Run(() =>
                 {
-                    return pathsQuery.Execute()?.AllResults()?.ToObjects<Path>(databaseName)?.ToList();
+                    return pathsQuery.Execute()?.AllResults()?.ToObjects<Path>()?.ToList();
                 });
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace CouchDraw.Repositories
                     {
                         if (e?.Results != null && e.Error == null)
                         {
-                            paths = e.Results.AllResults()?.ToObjects<Path>(databaseName) as List<Path>;
+                            paths = e.Results.AllResults()?.ToObjects<Path>() as List<Path>;
 
                             if (paths != null)
                             {
