@@ -12,5 +12,6 @@ namespace CouchDraw.Core.Repositories
         Task<List<Path>> GetInternalPathsAsync();
         List<Path> GetExternalPaths(Action<List<Path>> pathsUpdated);
         void DeletePaths(List<Path> paths);
+        void DeleteAllPaths();
     }
 }

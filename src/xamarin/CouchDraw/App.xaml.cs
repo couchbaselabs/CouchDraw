@@ -20,6 +20,11 @@ namespace CouchDraw
             MainPage = new MainPage();
         }
 
+        protected override void OnResume()
+        {
+            new DatabaseManager("couchdraw").StartReplication();
+        }
+
         string GetUniquePersistentId(string key)
         {
             var id = Preferences.Get(key, string.Empty);
@@ -33,4 +38,7 @@ namespace CouchDraw
             return id;
         }
     }
+
+
+
 }

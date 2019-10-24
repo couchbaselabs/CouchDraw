@@ -63,6 +63,7 @@ namespace CouchDraw.Repositories
             return paths;
         }
 
+
         public List<Path> GetExternalPaths(Action<List<Path>> pathsUpdated)
         {
             List<Path> paths = new List<Path>();
@@ -117,7 +118,27 @@ namespace CouchDraw.Repositories
             }
         }
 
-        public void Dispose()
+        public void DeleteAllPaths()
+        {
+            try
+            {
+                var pathsQuery = QueryBuilder
+                                .Select(SelectResult.All())
+                                .From(DataSource.Database(DatabaseManager.Database));
+
+
+                List<Path> paths = pathsQuery.Execute()?.AllResults()?.ToObjects<Path>()?.ToList();
+                DeletePaths(paths);
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"CanvasRepository GetInternalPaths Exception: {ex.Message}");
+            }
+        }
+
+            public void Dispose()
         {
             _pathsQuery.RemoveChangeListener(_pathsQueryToken);
             _pathsQuery = null;

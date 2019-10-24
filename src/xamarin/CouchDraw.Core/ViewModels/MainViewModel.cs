@@ -62,6 +62,36 @@ namespace CouchDraw.Core.ViewModels
             }
         }
 
+        ICommand _blankCanvas;
+        public ICommand BlankCanvas
+        {
+            get
+            {
+                if (_blankCanvas == null)
+                {
+                    _blankCanvas = new Command(ClearAll);
+                }
+
+                return _blankCanvas;
+            }
+        }
+
+
+        ICommand _forceUpdate;
+        public ICommand ForceUpdateCommand
+        {
+            get
+            {
+                if (_forceUpdate == null)
+                {
+                    _forceUpdate = new Command(forceUpdate);
+                }
+
+                return _forceUpdate;
+            }
+        }
+        
+
         ICanvasRepository CanvasRepository { get; set; }
 
         public MainViewModel(Action updateCanvas)
@@ -82,12 +112,21 @@ namespace CouchDraw.Core.ViewModels
             if (internalPaths?.Count > 0)
             {
                 Paths = internalPaths;
+            } else
+            {
+                Paths = new List<Path>();
             }
 
             if (externalPaths?.Count > 0)
             {
                 ExternalPaths = externalPaths;
+            } else
+            {
+                ExternalPaths = new List<Path>();
             }
+
+            UpdateCanvas?.Invoke();
+
         }
 
         public void CreatePath(Point point)
@@ -148,6 +187,23 @@ namespace CouchDraw.Core.ViewModels
             CanvasRepository?.DeletePaths(Paths);
             Paths = new List<Path>();
             UpdateCanvas?.Invoke();
+        }
+
+
+        void ClearAll()
+        {
+            CanvasRepository?.DeleteAllPaths();
+            Paths = new List<Path>();
+            UpdateCanvas?.Invoke();
+
+            Paths = new List<Path>();
+            ExternalPaths = new List<Path>();
+        }
+
+        void forceUpdate()
+        {
+            Init();
+
         }
     }
 }

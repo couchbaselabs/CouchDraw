@@ -58,8 +58,14 @@
             
                 <Button Text="Undo" Command="{Binding UndoPathCommand}" TextColor="Purple"
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="StartAndExpand" />
+
+                <Button Text="Rerender" Command="{Binding ForceUpdateCommand}" TextColor="Purple"
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="StartAndExpand" />
+
+                <Button Text="Blank" Command="{Binding BlankCanvas}" TextColor="Fuchsia" 
+                        FontAttributes="Bold" FontSize="Large" HorizontalOptions="EndAndExpand" />
         
-                <Button Text="Clear All" Command="{Binding ClearAllPathsCommand}" TextColor="Fuchsia" 
+                <Button Text="Clear Mine" Command="{Binding ClearAllPathsCommand}" TextColor="Fuchsia" 
                         FontAttributes="Bold" FontSize="Large" HorizontalOptions="EndAndExpand" />
             
             </StackLayout>
