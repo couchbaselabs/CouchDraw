@@ -146,6 +146,8 @@ namespace CouchDraw.Core.ViewModels
         
         public void AddPoint(Point point)
         {
+
+            
             if (Paths != null)
             {
                 var path = Paths.Last();
@@ -167,6 +169,16 @@ namespace CouchDraw.Core.ViewModels
         void UpdatePaths(List<Path> paths)
         {
             ExternalPaths = paths;
+            var internalPaths = CanvasRepository.GetInternalPaths();
+
+            
+
+            if (internalPaths == null || internalPaths?.Count == 0)
+            {
+                Paths = new List<Path>();
+            }
+
+
             UpdateCanvas?.Invoke();
         }
 
@@ -192,6 +204,8 @@ namespace CouchDraw.Core.ViewModels
 
         void ClearAll()
         {
+            
+
             CanvasRepository?.DeleteAllPaths();
             Paths = new List<Path>();
             UpdateCanvas?.Invoke();
@@ -203,7 +217,34 @@ namespace CouchDraw.Core.ViewModels
         void forceUpdate()
         {
             Init();
+            CheckInternetConnection();
+        }
 
+
+        public bool CheckInternetConnection()
+        {
+            string CheckUrl = "http://google.com";
+
+            try
+            {
+                System.Net.HttpWebRequest iNetRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(CheckUrl);
+
+                iNetRequest.Timeout = 3000;
+
+                System.Net.WebResponse iNetResponse = iNetRequest.GetResponse();
+
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Internet is up! ");
+                iNetResponse.Close();
+
+                return true;
+
+            }
+            catch (System.Net.WebException ex)
+            {
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Oh... internet is down! but your changes were saved locally.");
+
+                return false;
+            }
         }
     }
 }

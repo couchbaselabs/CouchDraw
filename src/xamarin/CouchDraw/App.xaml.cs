@@ -18,6 +18,11 @@ namespace CouchDraw
             ServiceContainer.Register<ICanvasRepository>(new CanvasRepository());
 
             MainPage = new MainPage();
+
+            Acr.UserDialogs.ToastConfig.DefaultActionTextColor = Color.White;
+            Acr.UserDialogs.ToastConfig.DefaultBackgroundColor = Color.CadetBlue;
+            Acr.UserDialogs.ToastConfig.DefaultDuration = TimeSpan.FromSeconds(2.0);
+            Acr.UserDialogs.ToastConfig.DefaultPosition = Acr.UserDialogs.ToastPosition.Top;
         }
 
         protected override void OnResume()

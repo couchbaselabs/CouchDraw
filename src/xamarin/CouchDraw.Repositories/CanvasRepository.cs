@@ -64,6 +64,29 @@ namespace CouchDraw.Repositories
         }
 
 
+        public List<Path> GetInternalPaths()
+        {
+            var paths = new List<Path>();
+
+            try
+            {
+                var pathsQuery = QueryBuilder
+                                .Select(SelectResult.All())
+                                .From(DataSource.Database(DatabaseManager.Database))
+                                .Where((Expression.Property("type").EqualTo(Expression.String("path"))
+                                .And(Expression.Property("createdBy").EqualTo(Expression.String(AppInstance.AppId)))));
+
+
+                return pathsQuery.Execute()?.AllResults()?.ToObjects<Path>()?.ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"CanvasRepository GetInternalPaths Exception: {ex.Message}");
+            }
+
+            return paths;
+        }
+
         public List<Path> GetExternalPaths(Action<List<Path>> pathsUpdated)
         {
             List<Path> paths = new List<Path>();
@@ -80,6 +103,9 @@ namespace CouchDraw.Repositories
                 {
                     _pathsQueryToken = _pathsQuery.AddChangeListener((object sender, QueryChangedEventArgs e) =>
                     {
+
+                        //Acr.UserDialogs.UserDialogs.Instance.Toast("Something changed", new TimeSpan(3000));
+
                         if (e?.Results != null && e.Error == null)
                         {
                             paths = e.Results.AllResults()?.ToObjects<Path>() as List<Path>;
@@ -87,6 +113,9 @@ namespace CouchDraw.Repositories
                             if (paths != null)
                             {
                                 pathsUpdated.Invoke(paths);
+                            } else
+                            {
+                                pathsUpdated.Invoke(new List<Path>());
                             }
                         }
                     });
