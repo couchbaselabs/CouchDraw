@@ -211,4 +211,4 @@ Thanks so much for taking a look at CouchDraw! This is a very simple example, an
 - Adding the ability to change the line thickness.
 - Adding the ability to erase lines that have been drawn.
 
-If you have any questions, comments, or would like to contribute to this projects please reach out to me directly at denis.rosa@couchbase.com or on [Twitter](https://twitter.com/probablyrealrob).
+If you have any questions, comments, or would like to contribute to this projects please reach out to me directly at denis.rosa@couchbase.com or on [Twitter](https://twitter.com/deniswsrosa).
